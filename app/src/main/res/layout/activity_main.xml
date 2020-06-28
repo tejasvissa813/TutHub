@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F57C00"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="412dp"
+        android:layout_height="208dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/amatic_sc"
+        android:gravity="center"
+        android:text="Tutor HUB"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="75sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/teacherLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tutorLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_view_corner"
+        android:fontFamily="@font/amatic_sc"
+        android:text="TUTOR Log In"
+        android:textAlignment="center"
+        android:textColor="#F57C00"
+        android:textSize="75sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/studentLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teacherLogin" />
+
+    <TextView
+        android:id="@+id/teacherLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_view_corner"
+        android:fontFamily="@font/amatic_sc"
+        android:text="TEACHER Log In"
+        android:textAlignment="center"
+        android:textColor="#F57C00"
+        android:textSize="75sp"
+        android:textStyle="bold"
+        android:onClick="perform_action"
+        app:layout_constraintBottom_toTopOf="@+id/tutorLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/studentLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_view_corner"
+        android:fontFamily="@font/amatic_sc"
+        android:text="STUDENT Log In"
+        android:textAlignment="center"
+        android:textColor="#F57C00"
+        android:textSize="75sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tutorLogin" />
+
+    <TextView
+        android:id="@+id/signUp"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:fontFamily="@font/amatic_sc"
+        android:text="SIGN UP"
+        android:textAlignment="center"
+        android:textColor="#F57C00"
+        android:textSize="75sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
