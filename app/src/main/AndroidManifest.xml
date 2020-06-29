@@ -10,6 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TeacherChat"></activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".TeachingHub" />
+        <activity android:name=".StudentHub" />
+        <activity android:name=".LogInStudent" />
         <activity android:name=".signUp" />
         <activity
             android:name=".MainActivity"

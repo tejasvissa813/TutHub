@@ -3,6 +3,7 @@ package com.example.tutorhub;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,7 +27,7 @@ public class signUp extends AppCompatActivity {
     EditText user_name;
     EditText email;
     RadioGroup rg;
-    PasswordStorage pshelper;
+    public static PasswordStorage pshelper;
     public static SQLiteDatabase pdb;
     private static Context context;
 
@@ -79,6 +80,7 @@ public class signUp extends AppCompatActivity {
             pshelper = new PasswordStorage(getAppContext());
             PasswordStorage.DATABASE_VERSION++;
             pdb = pshelper.getWritableDatabase();
+            getDataBase();
             //DbHelper dbh = new DbHelper(getAppContext());
             values.put(PasswordStorageInfo.FeedEntry.COLUMN_ONE, address);
             values.put(PasswordStorageInfo.FeedEntry.COLUMN_TWO, name);
@@ -86,10 +88,15 @@ public class signUp extends AppCompatActivity {
             values.put(PasswordStorageInfo.FeedEntry.COLUMN_FOUR, type);
             long newRowId = pdb.insert(PasswordStorageInfo.FeedEntry.TABLE_NAME, null, values);
             readData();
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         }else{
             pass1.setTextColor(Color.parseColor("red"));
             pass2.setTextColor(Color.parseColor("red"));
         }
+    }
+    public static SQLiteDatabase getDataBase(){
+        return pdb;
     }
     public void readData(){
         String selection = PasswordStorageInfo.FeedEntry.COLUMN_ONE + " = ?";
@@ -132,28 +139,4 @@ final class PasswordStorageInfo{
 
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedEntry.TABLE_NAME;
-}
-class PasswordStorage extends SQLiteOpenHelper {
-    public static int DATABASE_VERSION = 2;
-    public static final String DATABASE_NAME = "Passwords.db";
-    PasswordStorageInfo p = new PasswordStorageInfo();
-
-    public PasswordStorage(Context context) {
-        super(context, DATABASE_NAME,null, DATABASE_VERSION);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(PasswordStorageInfo.SQL_CREATE_ENTRIES);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(PasswordStorageInfo.SQL_DELETE_ENTRIES);
-        onCreate(db);
-    }
-
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
-    }
 }
